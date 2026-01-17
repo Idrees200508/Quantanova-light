@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuantaNova School of Excellence | Futuristic I-STEM Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: { red: '#c61920', indigo: '#393182', gold: '#f59e0b' },
+              navy: { 800: '#1e293b', 900: '#0a0f1d', 950: '#020617' }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Orbitron', 'sans-serif'],
+            },
+            animation: {
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'spin-slow': 'spin 12s linear infinite',
+              'scan': 'scan 3s linear infinite',
+            },
+            keyframes: {
+              scan: {
+                '0%': { transform: 'translateY(-100%)', opacity: '0' },
+                '50%': { opacity: '0.5' },
+                '100%': { transform: 'translateY(100%)', opacity: '0' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body { background-color: #ffffff; color: #393182; overflow-x: hidden; }
+      
+      .blueprint-grid {
+        background-image: linear-gradient(to right, rgba(57, 49, 130, 0.05) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(57, 49, 130, 0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      
+      .scanline-overlay {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 50%,
+          rgba(0, 0, 0, 0.02) 50%
+        );
+        background-size: 100% 4px;
+        z-index: 9999;
+        pointer-events: none;
+        opacity: 0.5;
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      
+      .perspective-hero {
+        perspective: 1000px;
+      }
+
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #f8fafc; }
+      ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #393182; }
+
+      @keyframes scan {
+        from { top: -100%; }
+        to { top: 100%; }
+      }
+      
+      .quantum-glow {
+        box-shadow: 0 0 40px rgba(198, 25, 32, 0.15);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "ogl": "https://esm.sh/ogl@^1.0.11",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div class="scanline-overlay"></div>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

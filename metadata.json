@@ -1,0 +1,7 @@
+{
+  "name": " light reactbits",
+  "description": "reactbits\n",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
