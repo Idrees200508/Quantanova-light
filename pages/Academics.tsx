@@ -1,125 +1,91 @@
 
 import React from 'react';
-import { 
-  GraduationCap, CheckCircle2, BookOpen, Brain, 
-  Globe, Cpu, ShieldCheck, ChevronRight, Microscope
-} from 'lucide-react';
-/* Fix: Standard import for react-router-dom Link */
-import { Link } from 'react-router-dom';
-import Button from '../components/Button';
 import SmoothReveal from '../components/SmoothReveal';
 import SEO from '../components/SEO';
-import Magnet from '../components/Magnet';
+import { BookOpen, GraduationCap, Microscope, ClipboardCheck } from 'lucide-react';
 import Iridescence from '../components/Iridescence';
 
 const Academics: React.FC = () => {
-  const levels = [
-    {
-      title: 'FOUNDATIONAL YEARS',
-      grades: 'Nursery to UKG',
-      partner: 'Oxford Advantage',
-      desc: 'Early logic and phonetic mastery. Focusing on sensory development and collaborative play.',
-      features: ['Phonetic Foundations', 'Number Logic', 'Motor-Skill Labs', 'Sensory Play'],
-      icon: Brain,
-      slug: 'oxford-preprimary'
-    },
-    {
-      title: 'PRIMARY YEARS',
-      grades: 'Grades 1 to 5',
-      partner: 'Oxford Core',
-      desc: 'Bridging conceptual learning with practical lab observation. The start of the I-STEM journey.',
-      features: ['Inquiry-Based Science', 'Global English', 'Logic Mastery', 'Junior Robotics'],
-      // Added missing Microscope import to fix reference error
-      icon: Microscope,
-      slug: 'oxford-primary'
-    },
-    {
-      title: 'HIGH SCHOOL',
-      grades: 'Grades 6 to 10',
-      partner: 'TS State Board + Quanta I-STEM',
-      desc: 'Preparing for board excellence while mastering industrial-grade hardware and software engineering.',
-      features: ['State Board Mastery', 'Applied Physics', 'AI Programming', 'Elite Leadership'],
-      icon: Cpu,
-      slug: 'ts-stateboard'
-    }
-  ];
-
   return (
-    <div className="bg-white pb-32 pt-20">
-      <SEO title="Academic Matrix" />
-      
-      {/* Hero */}
-      <section className="pt-32 pb-24 px-6 text-center border-b border-slate-100 relative overflow-hidden">
-        {/* Fix: use colorA instead of color and cast to tuple */}
-        <Iridescence colorA={[0.9, 1, 1] as [number, number, number]} speed={0.3} className="opacity-50" />
-        <div className="absolute inset-0 blueprint-grid pointer-events-none opacity-40"></div>
-        <SmoothReveal>
-          <div className="inline-flex flex-col items-center gap-6 mb-12 relative z-10">
-            <Magnet strength={0.2}>
-              <img src="https://oxfordadvantage.co.in/OxfordAdvantage/Images/OxfordAdvantage/OxfordAdvantageLogo.svg" alt="Oxford Logo" className="h-20 object-contain mb-4 mx-auto" />
-            </Magnet>
-            <div className="bg-white/70 backdrop-blur-sm border border-brand-indigo/20 rounded-full px-8 py-2.5 shadow-sm">
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-indigo">Core Curriculum Synergy</span>
-            </div>
-          </div>
-          <h1 className="text-5xl md:text-[8rem] font-display font-bold text-brand-indigo uppercase tracking-tighter mb-10 leading-none relative z-10">
-            THE <span className="text-brand-red">MATRIX</span>
-          </h1>
-          <p className="text-xl md:text-3xl text-slate-500 font-light max-w-4xl mx-auto italic leading-relaxed relative z-10">
-            QuantaNova blends world-class <strong className="text-brand-indigo">Oxford Advantage</strong> pedagogy with 21st-century I-STEM implementation.
-          </p>
-        </SmoothReveal>
-      </section>
+    <div className="pt-24 pb-12 bg-white min-h-screen">
+      <SEO title="Academics | The Hybrid Foundation" />
 
-      {/* Grade Levels Grid */}
-      <section className="py-32 px-6">
-        <div className="max-w-7xl mx-auto space-y-16">
-          {levels.map((level, idx) => (
-            <SmoothReveal key={idx} delay={idx * 150}>
-              <div className="bg-slate-50 rounded-[4rem] p-12 md:p-20 border border-slate-100 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center hover:border-brand-red/20 transition-all shadow-2xl">
-                <div className="lg:col-span-1 hidden lg:block">
-                   <div className="w-16 h-16 bg-brand-red text-white rounded-2xl flex items-center justify-center font-display font-bold text-2xl">0{idx+1}</div>
-                </div>
-                <div className="lg:col-span-7 space-y-8">
-                  <div className="space-y-2">
-                    <div className="text-[10px] font-black text-brand-red uppercase tracking-[0.4em]">{level.title}</div>
-                    <h2 className="text-4xl md:text-5xl font-display font-bold text-brand-indigo uppercase tracking-tighter leading-none">{level.grades}</h2>
-                    <div className="text-brand-indigo font-bold text-sm italic">{level.partner}</div>
-                  </div>
-                  <p className="text-slate-500 text-xl font-light leading-relaxed">{level.desc}</p>
-                  <div className="flex flex-wrap gap-4">
-                     {level.features.map(f => (
-                       <div key={f} className="bg-white px-6 py-2 rounded-full border border-slate-200 text-[10px] font-black uppercase text-brand-indigo tracking-widest flex items-center gap-3">
-                          <CheckCircle2 size={16} className="text-brand-red" /> {f}
-                       </div>
-                     ))}
-                  </div>
-                </div>
-                <div className="lg:col-span-4 flex flex-col items-center lg:items-end gap-10">
-                   <div className="w-32 h-32 bg-white rounded-[2.5rem] border border-slate-100 flex items-center justify-center text-brand-indigo shadow-xl">
-                      <level.icon size={64} />
-                   </div>
-                   <Link to={`/curriculum/${level.slug}`} className="w-full">
-                      <Button variant="primary" className="w-full rounded-2xl py-6 flex items-center justify-center gap-3 uppercase font-black tracking-widest">
-                        Full Syllabus <ChevronRight size={18} />
-                      </Button>
-                   </Link>
-                </div>
-              </div>
-            </SmoothReveal>
-          ))}
+      {/* Hero Header */}
+      <section className="py-24 text-center relative overflow-hidden bg-slate-50 border-b border-slate-100">
+        <Iridescence colorA={[0.9, 0.95, 1]} speed={0.3} className="opacity-40" />
+        <div className="absolute inset-0 blueprint-grid pointer-events-none opacity-20"></div>
+        <div className="max-w-4xl mx-auto px-6 relative z-10">
+          <SmoothReveal>
+            <h1 className="text-4xl md:text-8xl font-display font-bold text-brand-indigo uppercase tracking-tighter leading-none mb-6">
+              THE <span className="text-brand-red">HYBRID</span> <br /> FRAMEWORK
+            </h1>
+            <p className="text-lg md:text-2xl text-slate-500 font-light leading-relaxed italic">
+              "Selecting the most robust curriculum partners for every stage of development."
+            </p>
+          </SmoothReveal>
         </div>
       </section>
 
-      {/* Final Callout */}
-      <section className="py-32 bg-navy-950 text-white blueprint-major">
-        <div className="max-w-4xl mx-auto px-6 text-center space-y-12">
-           <ShieldCheck size={64} className="text-brand-red mx-auto" />
-           <h2 className="text-4xl md:text-7xl font-display font-bold uppercase tracking-tighter">GLOBAL <span className="text-brand-red">BENCHMARKS</span></h2>
-           <p className="text-slate-400 text-2xl font-light leading-relaxed italic">
-             "We don't just teach kids to score; we teach them to lead in a globalized economy."
-           </p>
-           <Link to="/contact" className="inline-block"><Button variant="outline" className="text-white border-white/20 hover:bg-white hover:text-navy-950 px-16 py-8 rounded-full text-lg font-black tracking-widest">Inquire About Admission</Button></Link>
+      {/* The Two Tracks */}
+      <section className="py-24 max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+          {/* Early Years / Primary */}
+          <SmoothReveal>
+            <div className="group bg-white p-12 rounded-[4rem] border border-slate-200 hover:border-brand-red/30 transition-all shadow-2xl h-full flex flex-col items-center text-center">
+              <div className="w-20 h-20 bg-brand-red/10 rounded-3xl flex items-center justify-center text-brand-red mb-8 group-hover:bg-brand-red group-hover:text-white transition-all shadow-xl">
+                <BookOpen size={40} />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-indigo mb-4 uppercase">EARLY YEARS <br /> & PRIMARY</h2>
+              <div className="inline-block px-4 py-1.5 bg-slate-100 rounded-full mb-8">
+                <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">Nursery to Class 5 • Oxford Advantage</span>
+              </div>
+              <p className="text-slate-600 text-xl font-light leading-relaxed mb-8 flex-grow">
+                Partnered with **Oxford Advantage**, we focus on foundational language mastery and curiosity-driven activities. We ensure children understand *why* before they learn *what*.
+              </p>
+              <div className="w-full grid grid-cols-2 gap-4">
+                {['Curiosity First', 'Language Mastery', 'Phonics & Logic', 'Play-Based Labs'].map(f => (
+                  <div key={f} className="p-4 bg-slate-50 rounded-2xl border border-slate-100 text-[9px] font-black uppercase tracking-widest text-brand-indigo flex items-center justify-center gap-3">
+                    <Microscope size={14} className="text-brand-red" /> {f}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </SmoothReveal>
+
+          {/* Middle & High School */}
+          <SmoothReveal delay={200}>
+            <div className="group bg-brand-indigo p-12 rounded-[4rem] border border-brand-indigo/20 hover:border-brand-red/50 transition-all shadow-2xl h-full flex flex-col items-center text-center text-white">
+              <div className="w-20 h-20 bg-white/10 rounded-3xl flex items-center justify-center text-white mb-8 group-hover:bg-brand-red transition-all shadow-xl border border-white/10">
+                <GraduationCap size={40} />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-display font-bold mb-4 uppercase">MIDDLE & <br /> HIGH SCHOOL</h2>
+              <div className="inline-block px-4 py-1.5 bg-white/10 rounded-full mb-8 border border-white/5">
+                <span className="text-[10px] font-black uppercase tracking-widest text-brand-gold">Class 6 to Grade 10 • Supercharged State</span>
+              </div>
+              <p className="text-slate-300 text-xl font-light leading-relaxed mb-8 flex-grow">
+                Transitioning to the **Telangana State Syllabus**, but enhanced with lab-oriented instruction. Students meet board standards while possessing a **Research Mindset**.
+              </p>
+              <div className="w-full grid grid-cols-2 gap-4">
+                {['Rigorous Academics', 'iSTEM Integrated', 'Research Focus', 'Board Ready'].map(f => (
+                  <div key={f} className="p-4 bg-white/5 rounded-2xl border border-white/10 text-[9px] font-black uppercase tracking-widest text-brand-gold flex items-center justify-center gap-3">
+                    <ClipboardCheck size={14} className="text-brand-red" /> {f}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </SmoothReveal>
+
+        </div>
+      </section>
+
+      {/* Final Note */}
+      <section className="py-24 bg-white text-center">
+        <div className="max-w-2xl mx-auto px-6">
+          <div className="w-20 h-1 bg-brand-red mx-auto mb-10"></div>
+          <p className="text-slate-500 italic text-lg md:text-2xl leading-relaxed">
+            "We don't just teach the syllabus; we teach the logic behind every axiom."
+          </p>
         </div>
       </section>
     </div>
